@@ -23,52 +23,52 @@ The entire PIL region **allocated** by the UEFI firmware is:
 | Memory Size  | 0x00500000 | 0x02800000 | 0x01E00000 | 0x00500000 | 0x00500000 | 0x00010000 | 0x00005000 | 0x00600000 | 0x0F600000 | 0x01900000 |
 | Config       | ACPI, PILE | SUBA, PILE | SUBC, PILE | PILE       | PILE       | PILE       | PILE       | PILE, SUBS | SUBM       | SUBW       |
 
-PGCM area is configured in PILE (qcpilEXT7280) and must match above table allocation plan.
+PGCM area is configured in PILE (qcpilEXT7325) and must match above table allocation plan.
 
 **Below regions are hardcoded in ACPI tables and are therefore not dynamically used by the Operating System**
 
 - CAMERA: Start 0x85C00000, End 0x86100000, Size 0x00500000
    - Defined in ACPI DSDT, Device(VFE0)
-   - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+   - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 **Below regions are not hardcoded in ACPI tables / firmware and are therefore dynamically used by the Operating System**
 
 For this kind of region, the PIL driver is instructed the total size of the region in use dynamically below using "PGCM":
 
 - PGCM:	  Start 0x86100000, End 0x9D600000, Size 0x17500000
-  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 We then define every firmware binary meant to load in such region:
 
 - ADSP:   Start 0x86100000, End 0x88900000, Size 0x02800000
-  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
-  - Defined in \components\QC7325\Extensions\Subsystems\Audio\qcsubsys_ext_adsp7280.inf
+  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
+  - Defined in \components\QC7325\Extensions\Subsystems\Audio\qcsubsys_ext_adsp7325.inf
 
 - CDSP:   Start 0x88900000, End 0x8A700000, Size 0x01E00000
-	- Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
-	- Defined in \components\QC7325\Extensions\Subsystems\Compute\qcsubsys_ext_cdsp7280.inf
+	- Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
+	- Defined in \components\QC7325\Extensions\Subsystems\Compute\qcsubsys_ext_cdsp7325.inf
 
 - VENUS:  Start 0x8A700000, End 0x8AC00000, Size 0x00500000
-  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 - EVA:    Start 0x8AC00000, End 0x8B100000, Size 0x00500000
-  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 - IPA:    Start 0x8B100000, End 0x8B110000, Size 0x00010000
-  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+  - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 - GFXSUC: Start 0x8B110000, End 0x8B115000, Size 0x00005000
-   - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+   - Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 - DHMS:   Start 0x8B200000, End 0x8B800000, Size 0x00600000
-	- Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
-	- Defined in \components\QC7325\Drivers\Subsystems\CombinedSubsystem\qcsubsys7280.inf
+	- Defined in \components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
+	- Defined in \components\QC7325\Drivers\Subsystems\CombinedSubsystem\qcsubsys7325.inf
 
 - MODEM:  Start 0x8B800000, End 0x9AE00000, Size 0x0F600000
-	- Defined in \components\QC7325\Extensions\Subsystems\Modem\qcsubsys_ext_mpss7280.inf
+	- Defined in \components\QC7325\Extensions\Subsystems\Modem\qcsubsys_ext_mpss7325.inf
 
 - WPSS:   Start 0x9AE00000, End 0x9C700000, Size 0x01900000
-  - Defined in \components\QC7325\Extensions\WLAN\WPSS\qcwlan_ext_wpss7280.inf
+  - Defined in \components\QC7325\Extensions\WLAN\WPSS\qcwlan_ext_wpss7325.inf
 
 **GAP From 0x9C700000 to 0x9D600000**
 
@@ -78,7 +78,7 @@ We reached the end of the whole reserved region in our UEFI firmware.
 
 ### INF Packages
 
-\components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7280.inf
+\components\QC7325\Extensions\HexagonLoader\PIL\qcpilEXT7325.inf
 
 ```ini
 ; CAMERA registry values
@@ -128,7 +128,7 @@ HKR, IMEM, Offset,      %REG_DWORD%, 0x94C
 
 ```
 
-\components\QC7325\Drivers\Subsystems\CombinedSubsystem\qcsubsys7280.inf
+\components\QC7325\Drivers\Subsystems\CombinedSubsystem\qcsubsys7325.inf
 
 ```ini
 ; Format of MemClientInfo in parser. MemClientInfo can have array of below sequence of data.
@@ -143,7 +143,7 @@ HKR, IMEM, Offset,      %REG_DWORD%, 0x94C
 HKR,QSM\DHMSS,"MemClientInfo",%REG_MULTI_SZ%,"Diag","{00000000-0000-0000-0000-000000000000}","0","0x8B200000","0x00600000"
 ```
 
-\components\QC7325\Extensions\Subsystems\Audio\qcsubsys_ext_adsp7280.inf
+\components\QC7325\Extensions\Subsystems\Audio\qcsubsys_ext_adsp7325.inf
 
 ```ini
 [PIL_Reg_common]
@@ -154,7 +154,7 @@ HKR, SubsystemLoad\ADSP, MemoryAlignment, %REG_DWORD%, 0x00100000
 HKR, SubsystemLoad\ADSP, MemoryReservation, %REG_DWORD%, 0x02800000
 ```
 
-\components\QC7325\Extensions\Subsystems\Compute\qcsubsys_ext_cdsp7280.inf
+\components\QC7325\Extensions\Subsystems\Compute\qcsubsys_ext_cdsp7325.inf
 
 ```ini
 [PIL_Reg_common]
@@ -166,7 +166,7 @@ HKR, SubsystemLoad\CDSP, MemoryReservation, %REG_DWORD%, 0x01e00000
 
 ```
 
-\components\QC7325\Extensions\Subsystems\Modem\qcsubsys_ext_mpss7280.inf
+\components\QC7325\Extensions\Subsystems\Modem\qcsubsys_ext_mpss7325.inf
 
 ```ini
 [PIL_Reg_common]
@@ -179,7 +179,7 @@ HKR, SubsystemLoad\MODEM, MemoryAddress,   %REG_DWORD%, 0x8B800000
 HKR, SubsystemLoad\MODEM, MemoryReservation, %REG_DWORD%, 0x0f600000
 ```
 
-\components\QC7325\Extensions\WLAN\WPSS\qcwlan_ext_wpss7280.inf
+\components\QC7325\Extensions\WLAN\WPSS\qcwlan_ext_wpss7325.inf
 
 ```ini
 [PIL_Reg_common]
