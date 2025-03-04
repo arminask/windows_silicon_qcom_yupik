@@ -1,7 +1,7 @@
 # PIL Memory Region Settings Assignment
 
 
-## IDP07325 Platform ID Case Study
+## IDP07280 Platform ID Case Study
 
 ### Windows Firmware Information
 
