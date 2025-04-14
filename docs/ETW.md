@@ -187,8 +187,8 @@ Log</td>
 </details></td>
 </tr>
 <tr>
-<td></td>
-<td>TraceDebug</td>
+<td>AudioDspCalMgr</td>
+<td>AdcmTrace</td>
 <td>
 
 ```
